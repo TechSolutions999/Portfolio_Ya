@@ -6,9 +6,11 @@ $(function () {
 
     $(".navbar-toggler").on("click", function () {
         $("#ynNav").toggleClass("show");
+        $("body").toggleClass("menu-open", $("#ynNav").hasClass("show"));
     });
     $("#ynNav a").on("click", function () {
         $("#ynNav").removeClass("show");
+        $("body").removeClass("menu-open");
     });
 
     function drawNeural() {
@@ -43,7 +45,7 @@ $(function () {
     drawNeural();
     $(window).on("resize", drawNeural);
 
-    if (window.gsap) {
+    if (window.gsap && $(window).width() > 767 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.registerPlugin(ScrollTrigger);
         gsap.from(".reveal", {
             y: 48,

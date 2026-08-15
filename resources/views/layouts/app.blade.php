@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', $profile['name'].' — Portfolio')</title>
     <meta name="description" content="{{ $profile['title'] }} · Selected work 2021–2026">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <meta name="theme-color" content="#0a0a0a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
@@ -28,13 +33,14 @@
             <button class="btn-pill btn-line d-lg-none ml-2 navbar-toggler" type="button">Menu</button>
         </div>
     </nav>
-    <div id="ynNav" class="d-lg-none collapse" style="position:fixed;top:72px;left:16px;right:16px;z-index:999;">
-        <div class="glass p-4">
-            <a class="d-block mb-3 label" href="{{ route('home') }}#work">Work</a>
-            <a class="d-block mb-3 label" href="{{ route('home') }}#about">About</a>
-            <a class="d-block mb-3 label" href="{{ route('home') }}#skills">Skills</a>
-            <a class="d-block mb-3 label" href="{{ route('home') }}#path">Path</a>
-            <a class="d-block mb-3 label" href="{{ route('home') }}#contact">Contact</a>
+    <div id="ynNav" class="yn-menu d-lg-none collapse">
+        <div class="glass yn-menu-card">
+            <a href="{{ route('home') }}#work">Work</a>
+            <a href="{{ route('home') }}#about">About</a>
+            <a href="{{ route('home') }}#skills">Skills</a>
+            <a href="{{ route('home') }}#path">Path</a>
+            <a href="{{ route('home') }}#contact">Contact</a>
+            <a class="btn-pill btn-solid" href="{{ route('home') }}#work">View Work</a>
         </div>
     </div>
 
@@ -43,8 +49,8 @@
     <footer class="site-footer" id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 foot-col mb-5">
-                    <a class="logo serif" href="{{ route('home') }}" style="font-size:26px;font-style:italic;font-weight:700;">{{ $profile['name'] }}</a>
+                <div class="col-12 col-lg-3 foot-col mb-4 mb-lg-5">
+                    <a class="logo serif foot-logo" href="{{ route('home') }}">{{ $profile['name'] }}</a>
                     <p class="mt-3">{{ $profile['title'] }}</p>
                     <div class="soc-row mt-3">
                         <a class="soc" href="{{ $profile['linkedin'] }}" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -58,26 +64,26 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-6 col-lg-2 foot-col mb-5">
+                <div class="col-6 col-lg-2 foot-col mb-4 mb-lg-5">
                     <h6>Studio</h6>
                     <a href="{{ route('home') }}#work">Selected Work</a>
                     <a href="{{ route('home') }}#about">About</a>
                     <a href="{{ route('home') }}#skills">Skills</a>
                 </div>
-                <div class="col-6 col-lg-2 foot-col mb-5">
+                <div class="col-6 col-lg-2 foot-col mb-4 mb-lg-5">
                     <h6>Projects</h6>
                     @foreach(array_slice(config('portfolio.projects'), 0, 5) as $p)
                         <a href="{{ route('project.show', $p['slug']) }}">{{ $p['title'] }}</a>
                     @endforeach
                 </div>
-                <div class="col-lg-2 foot-col mb-5">
+                <div class="col-12 col-sm-6 col-lg-2 foot-col mb-4 mb-lg-5">
                     <h6>Visit</h6>
                     <p>{{ $profile['location'] }}</p>
                     <a href="tel:{{ $profile['phone_href'] }}">{{ $profile['phone'] }}</a>
                     <a href="mailto:{{ $profile['email'] }}">{{ $profile['email'] }}</a>
                     <a href="{{ $profile['linkedin'] }}" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
-                <div class="col-lg-3 foot-col mb-5">
+                <div class="col-12 col-sm-6 col-lg-3 foot-col mb-4 mb-lg-5">
                     <h6>Join Digest</h6>
                     @if(session('ok'))
                         <div class="alert-ok">{{ session('ok') }}</div>

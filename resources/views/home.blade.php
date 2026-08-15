@@ -17,7 +17,7 @@
                 <span class="live-t">Open to studio opportunities</span>
             </div>
             <h1>Architecture as a<br><span class="gold">Journey</span> to Healing</h1>
-            <p class="mb-4" style="color:#9ca3af;font-weight:300;max-width:560px;margin:0 auto 8px;font-size:16px;">
+            <p class="hero-lead">
                 {{ $profile['name'] }} · {{ $profile['title'] }} · Selected work {{ $profile['years'] }}
             </p>
             <div class="hero-cta justify-content-center">
@@ -28,22 +28,24 @@
 
         <div class="hero-stage">
             <svg id="neural"></svg>
-            @foreach($sats as $i => $sat)
-                <a class="sat sat-{{ $i+1 }} glass reveal" href="{{ route('project.show', $sat['slug']) }}" data-node="sat{{ $i+1 }}">
-                    <img src="{{ asset('images/works/'.$sat['cover']) }}" alt="{{ $sat['title'] }}">
-                    <div class="sat-body">
-                        <span class="label">{{ $sat['code'] }}</span>
-                        <span style="font-weight:600;font-size:14px;">{{ $sat['title'] }}</span>
-                    </div>
-                </a>
-            @endforeach
             <a class="center-node glass d-block" href="{{ route('project.show', $hero['slug']) }}" data-node="center">
                 <img src="{{ asset('images/works/'.$hero['cover']) }}" alt="{{ $hero['title'] }}">
                 <div class="center-cap glass">
                     <span class="label">{{ $hero['code'] }} · Thesis</span>
-                    <div class="serif" style="font-style:italic;font-size:22px;">{{ $hero['title'] }}</div>
+                    <div class="serif center-title">{{ $hero['title'] }}</div>
                 </div>
             </a>
+            <div class="sat-wrap">
+                @foreach($sats as $i => $sat)
+                    <a class="sat sat-{{ $i+1 }} glass reveal" href="{{ route('project.show', $sat['slug']) }}" data-node="sat{{ $i+1 }}">
+                        <img src="{{ asset('images/works/'.$sat['cover']) }}" alt="{{ $sat['title'] }}">
+                        <div class="sat-body">
+                            <span class="label">{{ $sat['code'] }}</span>
+                            <span class="sat-name">{{ $sat['title'] }}</span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
@@ -56,7 +58,7 @@
         </div>
         <div class="row">
             @foreach($projects as $project)
-                <div class="col-md-6 col-lg-4 mb-4 reveal-up">
+                <div class="col-12 col-sm-6 col-lg-4 mb-4 reveal-up">
                     <a class="work-card glass" href="{{ route('project.show', $project['slug']) }}">
                         <img src="{{ asset('images/works/'.$project['cover']) }}" alt="{{ $project['title'] }}">
                         <div class="pad">
@@ -79,7 +81,7 @@
         </div>
         <div class="row">
             @foreach($skills as $skill)
-                <div class="col-md-6 col-lg-3 mb-4 reveal-up">
+                <div class="col-6 col-lg-3 mb-4 reveal-up">
                     <div class="skill-card glass">
                         <div class="ico">{{ strtoupper(substr($skill['name'],0,2)) }}</div>
                         <div class="label mb-2">{{ $skill['group'] }}</div>
