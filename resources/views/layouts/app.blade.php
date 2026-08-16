@@ -18,29 +18,30 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
+@php $home = rtrim(url('/'), '/').'/'; @endphp
 <div class="page">
     <nav class="navbar-yn d-flex align-items-center justify-content-between">
-        <a class="logo" href="{{ route('home') }}">{{ $profile['name'] }}</a>
+        <a class="logo" href="{{ $home }}">{{ $profile['name'] }}</a>
         <div class="nav-links d-none d-lg-flex align-items-center">
-            <a href="{{ route('home') }}#work">Work</a>
-            <a href="{{ route('home') }}#about">About</a>
-            <a href="{{ route('home') }}#skills">Skills</a>
-            <a href="{{ route('home') }}#path">Path</a>
-            <a href="{{ route('home') }}#contact">Contact</a>
+            <a href="{{ $home }}#work">Work</a>
+            <a href="{{ $home }}#about">About</a>
+            <a href="{{ $home }}#skills">Skills</a>
+            <a href="{{ $home }}#path">Path</a>
+            <a href="{{ $home }}#contact">Contact</a>
         </div>
         <div class="d-flex align-items-center">
-            <a class="btn-pill btn-solid d-none d-md-inline-flex" href="{{ route('home') }}#work">View Work</a>
+            <a class="btn-pill btn-solid d-none d-md-inline-flex" href="{{ $home }}#work">View Work</a>
             <button class="btn-pill btn-line d-lg-none ml-2 navbar-toggler" type="button">Menu</button>
         </div>
     </nav>
     <div id="ynNav" class="yn-menu d-lg-none collapse">
         <div class="glass yn-menu-card">
-            <a href="{{ route('home') }}#work">Work</a>
-            <a href="{{ route('home') }}#about">About</a>
-            <a href="{{ route('home') }}#skills">Skills</a>
-            <a href="{{ route('home') }}#path">Path</a>
-            <a href="{{ route('home') }}#contact">Contact</a>
-            <a class="btn-pill btn-solid" href="{{ route('home') }}#work">View Work</a>
+            <a href="{{ $home }}#work">Work</a>
+            <a href="{{ $home }}#about">About</a>
+            <a href="{{ $home }}#skills">Skills</a>
+            <a href="{{ $home }}#path">Path</a>
+            <a href="{{ $home }}#contact">Contact</a>
+            <a class="btn-pill btn-solid" href="{{ $home }}#work">View Work</a>
         </div>
     </div>
 
@@ -50,7 +51,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-3 foot-col mb-4 mb-lg-5">
-                    <a class="logo serif foot-logo" href="{{ route('home') }}">{{ $profile['name'] }}</a>
+                    <a class="logo serif foot-logo" href="{{ $home }}">{{ $profile['name'] }}</a>
                     <p class="mt-3">{{ $profile['title'] }}</p>
                     <div class="soc-row mt-3">
                         <a class="soc" href="{{ $profile['linkedin'] }}" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -66,9 +67,9 @@
                 </div>
                 <div class="col-6 col-lg-2 foot-col mb-4 mb-lg-5">
                     <h6>Studio</h6>
-                    <a href="{{ route('home') }}#work">Selected Work</a>
-                    <a href="{{ route('home') }}#about">About</a>
-                    <a href="{{ route('home') }}#skills">Skills</a>
+                    <a href="{{ $home }}#work">Selected Work</a>
+                    <a href="{{ $home }}#about">About</a>
+                    <a href="{{ $home }}#skills">Skills</a>
                 </div>
                 <div class="col-6 col-lg-2 foot-col mb-4 mb-lg-5">
                     <h6>Projects</h6>

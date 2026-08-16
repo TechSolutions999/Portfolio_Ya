@@ -13,6 +13,23 @@ $(function () {
         $("body").removeClass("menu-open");
     });
 
+    $(document).on("click", 'a[href*="#"]', function (e) {
+        var href = this.getAttribute("href") || "";
+        var id = href.split("#")[1];
+        if (!id) {
+            return;
+        }
+        var $t = $("#" + id);
+        if (!$t.length) {
+            return;
+        }
+        e.preventDefault();
+        $("html, body").stop().animate({ scrollTop: $t.offset().top - 80 }, 450);
+        if (history.replaceState) {
+            history.replaceState(null, "", "#" + id);
+        }
+    });
+
     function drawNeural() {
         var $stage = $(".hero-stage");
         var $svg = $("#neural");
