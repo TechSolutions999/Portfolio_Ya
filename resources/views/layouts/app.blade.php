@@ -22,29 +22,10 @@
 <div class="page">
     <nav class="navbar-yn d-flex align-items-center justify-content-between">
         <a class="logo" href="{{ $home }}">{{ $profile['name'] }}</a>
-        <div class="nav-links d-none d-lg-flex align-items-center">
-            <a href="{{ $home }}#work">Work</a>
-            <a href="{{ $home }}#about">About</a>
-            <a href="{{ $home }}#skills">Skills</a>
-            <a href="{{ $home }}#path">Path</a>
-            <a href="{{ $home }}#contact">Contact</a>
-        </div>
         <div class="d-flex align-items-center">
-            <a class="btn-pill btn-solid d-none d-md-inline-flex" href="{{ $home }}#work">View Work</a>
-            <button class="btn-pill btn-line d-lg-none ml-2 navbar-toggler" type="button">Menu</button>
-        </div>
-    </nav>
-    <div id="ynNav" class="yn-menu d-lg-none collapse">
-        <div class="glass yn-menu-card">
-            <a href="{{ $home }}#work">Work</a>
-            <a href="{{ $home }}#about">About</a>
-            <a href="{{ $home }}#skills">Skills</a>
-            <a href="{{ $home }}#path">Path</a>
-            <a href="{{ $home }}#contact">Contact</a>
             <a class="btn-pill btn-solid" href="{{ $home }}#work">View Work</a>
         </div>
-    </div>
-
+    </nav>
     @yield('content')
 
     <footer class="site-footer" id="contact">
